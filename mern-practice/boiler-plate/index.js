@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
+const config = require("./config/key");
 /* MongoDB에 저장될 User Schema 가져오기 */
 const { User } = require("./models/User")
 
@@ -15,9 +16,8 @@ app.use(bodyParser.json())
 
 /* mongoDB연결 mongoose 사용 */
 const mongoose = require("mongoose");
-const mongoStr = "mongodb+srv://isc963:xx9632@boilerplate.a2v6j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose
-  .connect(mongoStr)
+  .connect(config.mongoURI)
   .then(() => {
     console.log("MongoDB Connection");
   })
@@ -27,14 +27,14 @@ mongoose
 
 // 루트
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("안녕");
 });
 
 // 회원가입
 app.post('/register', (req, res) => {
 	const user = new User(req.body)
 	
-	user.save((err, doc) => {
+	user.save((err, userInfo) => {
 		if(err){
 			return res.json({success: false, err})
 		}
