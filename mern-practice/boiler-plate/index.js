@@ -14,6 +14,10 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+/* cookie-parser*/
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
 /* mongoDB연결 mongoose 사용 */
 const mongoose = require("mongoose");
 mongoose
@@ -40,6 +44,42 @@ app.post('/register', (req, res) => {
 		}
 		return res.status(200).json({
 			success: true,
+		})
+	})
+})
+
+// 로그인
+app.post('/login', (req, res) => {
+	// 데이터베이스에서 아이디 확인
+	User.findOne({ email: req.body.email }, (err, userInfo) => {
+		if(!userInfo){
+			return res.json({
+				loginSucces: false,
+				message: "회원이 아니신가?",
+			})
+		}
+
+		// 비밀번호 확인
+		user.comparePassword(req.body.password, (err, isMatch) => {
+			if(!isMatch){
+				return res.json( {
+					loginSucces: false,
+					message: "비밀번호 틀리셨는데",
+				})
+			}
+
+			// 합격 token 준다 ㅅㄱ
+			user.generateToken((err, user) => {
+				if(err) return res.status(400).send(err);
+				
+				// 토큰 저장.
+				res.cookie("x_auth", user.token)
+				.status(200)
+				.json({
+					loginSucces: true,
+					userID: user._id,
+				})
+			})
 		})
 	})
 })
