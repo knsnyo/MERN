@@ -42,7 +42,7 @@ app.get('/api/hello', (req, res) => {
 })
 
 // 회원가입
-app.post("/register", (req, res) => {
+app.post("/api/register", (req, res) => {
   const user = new User(req.body);
 
   user.save((err, userInfo) => {
@@ -56,7 +56,7 @@ app.post("/register", (req, res) => {
 });
 
 // 로그인
-app.post("/login", (req, res) => {
+app.post("/api/user/login", (req, res) => {
   // 이 사람 있어염?
   User.findOne({ email: req.body.email }, (err, user) => {
     if (!user) {
