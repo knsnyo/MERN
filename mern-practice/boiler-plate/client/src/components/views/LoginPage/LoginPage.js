@@ -21,17 +21,17 @@ function LoginPage(props) {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
+    console.log(
+      `Email: ${Email}
+      Password:${Password}`)
+
     let body = {
       email: Email,
       password: Password,
     };
 
     dispatch(loginUser(body)).then((res) => {
-      if (res.payload.loginSuccess) {
-        props.history.push("/");
-      } else {
-        alert("Error");
-      }
+      console.log(`login success: ${res.body}`)
     });
   };
 

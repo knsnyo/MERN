@@ -42,7 +42,7 @@ app.get('/api/hello', (req, res) => {
 })
 
 // 회원가입
-app.post("/api/register", (req, res) => {
+app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
 
   user.save((err, userInfo) => {
@@ -56,7 +56,7 @@ app.post("/api/register", (req, res) => {
 });
 
 // 로그인
-app.post("/api/user/login", (req, res) => {
+app.post("/api/users/login", (req, res) => {
   // 이 사람 있어염?
   User.findOne({ email: req.body.email }, (err, user) => {
     if (!user) {
@@ -91,5 +91,5 @@ app.post("/api/user/login", (req, res) => {
 
 /* 서버 열겠습니다. */
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`listening on port ${port}`);
 });
