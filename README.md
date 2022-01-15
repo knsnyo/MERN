@@ -17,3 +17,6 @@ N: Node.js
 ex: node_moudle, api key
 
 인프런 보고 해보기.
+
+해결 못 하고 있는 것.
+- 리덕스 상태 안 넘어옴(action은 넘어오는데 왜)
