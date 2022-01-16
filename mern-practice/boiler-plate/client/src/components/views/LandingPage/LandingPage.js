@@ -8,6 +8,17 @@ function LandingPage() {
     });
   }, []);
 
+  const onClickHandler = () => {
+    axios.get('/api/users/logout')
+    .then(res => {
+      if(true === res.data.success){
+        props.history.push("/login")
+      } else {
+        alert('failed logout')
+      }
+    })
+  }
+
   return (
     <div
       style={{
@@ -18,7 +29,9 @@ function LandingPage() {
         height: "100vh",
       }}
     >
-      LandingPage
+      <h2>LandingPage</h2>
+      <br />
+      <button onClick={onClickHandler}>logout</button>
     </div>
   );
 }

@@ -37,9 +37,9 @@ app.get("/", (req, res) => {
 });
 
 // axios test
-app.get('/api/hello', (req, res) => {
-  res.send("안녕하세염")
-})
+app.get("/api/hello", (req, res) => {
+  res.send("안녕하세염");
+});
 
 // 회원가입
 app.post("/api/users/register", (req, res) => {
@@ -80,12 +80,25 @@ app.post("/api/users/login", (req, res) => {
           return res.status(400).send(err);
         }
 
-				res.cookie("x_auth", user.token).status(200).json({
-					loginSuccess: true,
-					userId: user._id,
-				})
+        res.cookie("x_auth", user.token).status(200).json({
+          loginSuccess: true,
+          userId: user._id,
+        });
       });
     });
+  });
+});
+
+// 로그아웃
+app.get("/api/users/logout", auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, user) => {
+    if (err) {
+      return res.json({ success: false, err });
+    } else {
+      return res.status(200).send({
+        success: true,
+      });
+    }
   });
 });
 
