@@ -90,7 +90,7 @@ app.post("/api/users/login", (req, res) => {
 });
 
 // 로그아웃
-app.get("/api/users/logout", auth, (req, res) => {
+app.get("/api/users/logout", (req, res) => {
   User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, user) => {
     if (err) {
       return res.json({ success: false, err });

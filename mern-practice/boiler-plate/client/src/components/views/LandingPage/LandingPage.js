@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"
 
 function LandingPage() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios.get("/api/hello").then((res) => {
       console.log(res.data);
@@ -12,7 +15,7 @@ function LandingPage() {
     axios.get('/api/users/logout')
     .then(res => {
       if(true === res.data.success){
-        props.history.push("/login")
+        navigate('/login')
       } else {
         alert('failed logout')
       }
@@ -31,6 +34,7 @@ function LandingPage() {
     >
       <h2>LandingPage</h2>
       <br />
+      <br/>
       <button onClick={onClickHandler}>logout</button>
     </div>
   );

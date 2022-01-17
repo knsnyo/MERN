@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../_actions/user_action";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage(props) {
+  // navigate
+  const navigate = useNavigate()
+  
   // react-redux
   const dispatch = useDispatch();
 
@@ -32,6 +36,11 @@ function LoginPage(props) {
 
     dispatch(loginUser(body)).then((res) => {
       console.log(`login success: ${res.body}`)
+      if(true === res.payload.loginSuccess){
+        navigate('/')
+      } else {
+        alert("무언가의 오류")
+      }
     });
   };
 
