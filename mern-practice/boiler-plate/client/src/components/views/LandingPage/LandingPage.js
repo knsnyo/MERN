@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -12,15 +12,14 @@ function LandingPage() {
   }, []);
 
   const onClickHandler = () => {
-    axios.get('/api/users/logout')
-    .then(res => {
-      if(true === res.data.success){
-        navigate('/login')
+    axios.get("/api/users/logout").then((res) => {
+      if (true === res.data.success) {
+        navigate("/login");
       } else {
-        alert('failed logout')
+        alert("failed logout");
       }
-    })
-  }
+    });
+  };
 
   return (
     <div
@@ -33,8 +32,6 @@ function LandingPage() {
       }}
     >
       <h2>LandingPage</h2>
-      <br />
-      <br/>
       <button onClick={onClickHandler}>logout</button>
     </div>
   );

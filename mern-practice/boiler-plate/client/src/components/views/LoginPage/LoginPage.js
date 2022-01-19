@@ -37,6 +37,7 @@ function LoginPage(props) {
     dispatch(loginUser(body)).then((res) => {
       console.log(`login success: ${res.body}`)
       if(true === res.payload.loginSuccess){
+        // alert("login success")
         navigate('/')
       } else {
         alert("무언가의 오류")
