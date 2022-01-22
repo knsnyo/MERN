@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../../_actions/user_action";
+import { useNavigate } from "react-router-dom"
 
 function RegisterPage() {
+  const navigate = useNavigate();
   // react-redux
   const dispatch = useDispatch();
 
@@ -48,6 +50,8 @@ function RegisterPage() {
     dispatch(registerUser(body)).then((res) => {
       console.log(`register success: ${res.body}`);
     });
+
+    navigate("/login");
   };
 
   return (
@@ -77,7 +81,9 @@ function RegisterPage() {
           onChange={onConfirmPasswordHandler}
         />
         <br />
-        <button>Sign Up</button>
+        <button>
+          Register
+        </button>
       </form>
     </div>
   );

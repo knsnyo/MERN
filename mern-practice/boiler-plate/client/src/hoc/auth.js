@@ -4,25 +4,19 @@ import { auth } from "../_actions/user_action";
 import { useNavigate } from "react-router-dom";
 
 export default (SpecificComponent, option, adminRoute = null) => {
-  const AuthenticationCheck = (props) => {
+  const AuthenticationCheck = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
       dispatch(auth()).then((res) => {
-        // console.log(res);
-        if (false === res.payload.isAuth) {
-          if (true === option) {
-            navigate("/login");
-          }
-        } else {
-          if (true === adminRoute && false === res.payload.isAdmin) {
-            navigate("/");
-          } else {
-            if (false === option) {
-              navigate("/");
-            }
-          }
+        if (true === option && false === res.payload.isAuth){
+          navigate("/login");
+        } else if (false === option && true === res.payload.isAuth){
+          console.log(res.payload.isAuth)
+          navigate("/");
+        } else if (true === adminRoute && false === res.payload.isAdmin){
+          navigate("/")
         }
       });
     }, []);

@@ -29,16 +29,6 @@ mongoose
     console.log(`${err}`);
   });
 
-// 루트
-app.get("/", (req, res) => {
-  res.send("안녕");
-});
-
-// axios test
-app.get("/api/hello", (req, res) => {
-  res.send("안녕하세염");
-});
-
 // 회원가입
 app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
@@ -87,6 +77,7 @@ app.post("/api/users/login", (req, res) => {
   });
 });
 
+// 회원인증
 app.get("/api/users/auth", auth, (req, res) => {
   res.status(200).json({
     _id: req.user._id,
