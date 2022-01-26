@@ -53,7 +53,7 @@ function VideoUploadPage() {
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
-								<PlusSquareOutlined />
+								<p>+</p>
               </div>;
             }}
           </Dropzone>
