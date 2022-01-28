@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input} from "antd";
-import PlusSquareOutlined from "@ant-design/icons"
+import PlusOutlined from "@ant-design/icons"
 import Dropzone from "react-dropzone";
 
 const { TextArea } = Input;
@@ -53,7 +53,8 @@ function VideoUploadPage() {
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
-								<p>+</p>
+                {/* 이부분이 왜 안 될까? */}
+                <PlusOutlined style={{fontSize: "30px"}}/>
               </div>;
             }}
           </Dropzone>
