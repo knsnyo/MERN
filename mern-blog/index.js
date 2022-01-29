@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose
   .connect(
-    "mongodb+srv://isc963:xx9632@boilerplate.a2v6j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    "?!"
   )
   .then(() => console.log("MongoDB connect"));
 
