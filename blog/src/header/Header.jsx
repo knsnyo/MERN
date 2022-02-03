@@ -1,5 +1,5 @@
 import "./header.css";
-import HeaderImg from "./img/profile.png";
+import HeaderImg from "./img/headerBackground.png";
 
 export default function Header() {
 	return (
