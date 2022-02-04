@@ -1,7 +1,7 @@
 import "./sidebar.css";
 import Profile from "./img/profile.png";
 
-export default function Siderbar() {
+export default function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebarItem">
