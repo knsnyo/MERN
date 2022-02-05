@@ -1,5 +1,5 @@
 import "./post.css";
-import MusicImg from "./img/music.png"
+import MusicImg from "../../img/music.png"
 
 export default function Post() {
   return (

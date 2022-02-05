@@ -1,5 +1,5 @@
 import "./sidebar.css";
-import Profile from "./img/profile.png";
+import Profile from "../../img/profile.png";
 
 export default function Sidebar() {
   return (

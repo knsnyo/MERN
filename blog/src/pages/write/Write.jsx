@@ -1,5 +1,5 @@
 import "./write.css";
-import WriteBackground from "./img/writeBackground.png";
+import WriteBackground from "../../img/background.png";
 
 export default function Write() {
   return (
