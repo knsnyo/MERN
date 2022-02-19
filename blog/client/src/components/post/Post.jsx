@@ -1,9 +1,10 @@
 import "./post.css";
 import MusicImg from "../../img/music.png"
 
-export default function Post() {
+export default function Post({post}) {
   return (
     <div className="post">
+      {post.photo}
       <img className="postImg" src={MusicImg} alt="" />
       <div className="postInfo">
         <div className="postCategories">
@@ -11,16 +12,13 @@ export default function Post() {
           <span className="postCategory">Life</span>
         </div>
         <span className="postTitle">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          {post.title}
         </span>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">{new Date(post.createdAt).toDateString()}</span>
       </div>
       <p className="postDescription">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio nam,
-        vitae inventore nisi quasi exercitationem nostrum, aliquam, tenetur
-        natus sit excepturi impedit praesentium enim similique. Atque explicabo
-        temporibus deserunt ratione?
+        {post.description}
       </p>
     </div>
   );
