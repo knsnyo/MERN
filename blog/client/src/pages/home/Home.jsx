@@ -6,7 +6,7 @@ import "./home.css";
 import axios from "axios";
 
 export default function Home() {
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {

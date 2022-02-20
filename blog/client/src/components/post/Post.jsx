@@ -1,25 +1,25 @@
 import "./post.css";
-import MusicImg from "../../img/music.png"
+import MusicImg from "../../img/music.png";
+import { Link } from "react-router-dom";
 
-export default function Post({post}) {
+export default function Post({ post }) {
   return (
     <div className="post">
-      {post.photo}
-      <img className="postImg" src={MusicImg} alt="" />
+      {post.photo && <img className="postImg" src={post.photo} alt="" />}
       <div className="postInfo">
         <div className="postCategories">
           <span className="postCategory">Music</span>
           <span className="postCategory">Life</span>
         </div>
-        <span className="postTitle">
-          {post.title}
-        </span>
+        <Link to={`/post/${post._id}`} calssName="link">
+          <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">{new Date(post.createdAt).toDateString()}</span>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDescription">
-        {post.description}
-      </p>
+      <p className="postDescription">{post.description}</p>
     </div>
   );
 }
