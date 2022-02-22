@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import "./singlePost.css";
-import Music from "./img/music.png"
+import Music from "./img/music.png";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -10,10 +10,10 @@ export default function SinglePost() {
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
 
-  useEffect(()=>{
+  useEffect(() => {
     const getPost = async () => {
       const res = await axios.get("/posts/" + path);
-      console.log(res);
+      setPost(res.data);
     };
     getPost();
   }, [path]);
@@ -21,7 +21,9 @@ export default function SinglePost() {
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        {post.photo && (<img src={post.photo} alt="" className="singlePostImg"/>)}
+        {post.photo && (
+          <img src={post.photo} alt="" className="singlePostImg" />
+        )}
         <img src={Music} alt="" className="singlePostImg" />
         <h1 className="singPostTitle">
           {post.title}
@@ -34,11 +36,11 @@ export default function SinglePost() {
           <span className="singlePostAuthor">
             Autor: <b>{post.username}</b>
           </span>
-          <span className="singlePostDate">{new Date(post.createAt).toDateString}</span>
+          <span className="singlePostDate">
+            {new Date(post.createAt).toDateString}
+          </span>
         </div>
-        <p className="singlePostDescription">
-          {post.description}
-        </p>
+        <p className="singlePostDescription">{post.description}</p>
       </div>
     </div>
   );
