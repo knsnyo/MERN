@@ -29,7 +29,7 @@
 .registerButton{
 	margin-top: 20px;
 	cursor: pointer;
-	background-color: lightcoral;
+	background-color: teal;
 	border: none;
 	color: white;
 	border-radius: 10px;
@@ -41,9 +41,14 @@
 	top: 60px;
 	right: 20px;
 	cursor: pointer;
-	background-color: teal;
+	background-color: lightcoral;
 	border: none;
 	color: white;
 	border-radius: 10px;
 	padding: 10px;
+}
+
+.registerError{
+	color: red;
+	margin-top: 10px;
 }
