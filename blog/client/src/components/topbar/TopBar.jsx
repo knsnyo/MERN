@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./topbar.css";
-import Profile from "./img/profile.png";
-import { Link } from "react-router-dom";
+import Profile from "../../img/profile.png";
+import { Link, useSearchParams } from "react-router-dom";
 import { Context } from "../../context/Context";
 
 export default function TopBar() {
@@ -39,7 +39,7 @@ export default function TopBar() {
       </div>
       <div className="topRight">
         { user ? (
-          <img className="topImg" src={Profile} alt="why" />
+          <img className="topImg" src={user.profilePicture} alt="why" />
         ) : (
           <ul className="topList">
             <li className="topListItem">

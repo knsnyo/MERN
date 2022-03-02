@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import "./singlePost.css";
-import Music from "./img/music.png";
+import Music from "../../img/music.png";
 
 export default function SinglePost() {
   const location = useLocation();
