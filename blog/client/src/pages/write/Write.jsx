@@ -14,11 +14,11 @@ export default function Write() {
     e.preventDefault();
     const newPost = {
       username: user.username,
-      title: "title",
-      description: "description",
+      title,
+      description,
     };
     if (file) {
-      const data = FormData();
+      const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
@@ -35,18 +35,26 @@ export default function Write() {
 
   return (
     <div className="write">
-      <img className="writeImg" src={WriteBackground} alt="" />
+      {file && (
+        <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
+      )}
       <form className="writeForm" onSubmit={handleSubmit}>
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
             <i className="writeIcon fas fa-plus-square"></i>
           </label>
-          <input type="file" id="fileInput" style={{ display: "none" }} />
+          <input
+            type="file"
+            id="fileInput"
+            style={{ display: "none" }}
+            onChange={(e) => setFile(e.target.files[0])}
+          />
           <input
             type="text"
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="writeFormGroup">
@@ -54,6 +62,7 @@ export default function Write() {
             placeholder="Tell your story..."
             type="text"
             className="writeInput writeText"
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <button className="writeSubmit" type="submit">
