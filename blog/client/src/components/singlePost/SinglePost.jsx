@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import "./singlePost.css";
+import { Context } from "../../context/Context";
 import Music from "../../img/music.png";
 
 export default function SinglePost() {
@@ -9,7 +10,8 @@ export default function SinglePost() {
   //console.log(location);
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
-  const PF = "http://localhost:5000/images/"
+  const PF = "http://localhost:5000/images/";
+  const { user } = useContext(Context);
 
   useEffect(() => {
     const getPost = async () => {
@@ -28,10 +30,12 @@ export default function SinglePost() {
         <img src={Music} alt="" className="singlePostImg" />
         <h1 className="singPostTitle">
           {post.title}
+          {post.username === user.username &&
           <div className="singlePostEdit">
             <i className="singlePostIcon far fa-edit"></i>
             <i className="singlePostIcon far fa-trash-alt"></i>
           </div>
+          }
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
