@@ -4,12 +4,12 @@ const PostSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
-    description: {
+    desc: {
       type: String,
-      require: true,
+      required: true,
     },
     photo: {
       type: String,
@@ -19,9 +19,9 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    catogories: {
+    categories: {
       type: Array,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }

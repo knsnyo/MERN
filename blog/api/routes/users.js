@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id) {
     if (req.body.password) {
-      const salt = bcrypt.genSalt(10);
+      const salt = await bcrypt.genSalt(10);
       req.body.password = await bcrypt.hash(req.body.password, salt);
     }
     try {
@@ -23,7 +23,7 @@ router.put("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   } else {
-    res.status(401).json("You can update only your account.");
+    res.status(401).json("You can update only your account!");
   }
 });
 
@@ -35,47 +35,24 @@ router.delete("/:id", async (req, res) => {
       try {
         await Post.deleteMany({ username: user.username });
         await User.findByIdAndDelete(req.params.id);
-        res.status(200).json("User has been deleted.");
+        res.status(200).json("User has been deleted...");
       } catch (err) {
         res.status(500).json(err);
       }
     } catch (err) {
-      res.status(404).json("User not found");
+      res.status(404).json("User not found!");
     }
   } else {
-    res.status(401).json("You can delete only your account");
+    res.status(401).json("You can delete only your account!");
   }
 });
 
-//GET
+//GET USER
 router.get("/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const { password, ...others } = user._doc;
     res.status(200).json(others);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-//GET ALL POST
-router.get("/?user=", async (req, res) => {
-  const username = req.query.user;
-  const categoiresName = req.query.cat;
-  try {
-    let posts;
-    if (username) {
-      posts = await Post.find({ username: username });
-    } else if (categoriesName) {
-      posts = await Post.find({
-        categories: {
-          $in: [categoriesName],
-        },
-      });
-    } else {
-      posts = await Post.find();
-    }
-    res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
   }
