@@ -6,14 +6,9 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts")
 const categoriesRoute = require("./routes/categories");
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 const path = require("path");
 const multer = require("multer");
-=======
->>>>>>> parent of 157cb51 (20220218 image upload)
-=======
->>>>>>> parent of 157cb51 (20220218 image upload)
 
 dotenv.config();
 app.use(express.json());
