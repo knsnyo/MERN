@@ -12,7 +12,7 @@ export default function Register() {
     e.preventDefault(); // no refreshing
     setError(false);
     try {
-      const res = await axios.post("/auth/register", {
+      const res = await axios.post("/api/auth/register", {
         username,
         email,
         password,
