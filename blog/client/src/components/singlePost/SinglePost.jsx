@@ -1,30 +1,53 @@
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { Link, useLocation } from "react-router-dom";
 import "./singlePost.css";
-import Music from "./img/music.png"
+import { Context } from "../../context/Context";
+import Music from "../../img/music.png";
 
 export default function SinglePost() {
+  const location = useLocation();
+  //console.log(location);
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState({});
+  const PF = "http://localhost:5000/images/";
+  const { user } = useContext(Context);
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("/posts/" + path);
+      setPost(res.data);
+    };
+    getPost();
+  }, [path]);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
+        {post.photo && (
+          <img src={PF + post.photo} alt="" className="singlePostImg" />
+        )}
         <img src={Music} alt="" className="singlePostImg" />
         <h1 className="singPostTitle">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          {post.title}
+          {post.username === user.username &&
           <div className="singlePostEdit">
             <i className="singlePostIcon far fa-edit"></i>
             <i className="singlePostIcon far fa-trash-alt"></i>
           </div>
+          }
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Autor: <b>knsn</b>
+            <Link to={`/?user=${post.username}`} className="link">
+              Autor: <b>{post.username}</b>
+            </Link>
           </span>
-          <span className="singlePostDate">1 hours ago</span>
+          <span className="singlePostDate">
+            {new Date(post.createAt).toDateString}
+          </span>
         </div>
-        <p className="singlePostDescription">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex minima
-          architecto porro dolor maiores quo expedita. Itaque non, inventore
-          blanditiis possimus voluptatem obcaecati ducimus aliquam harum ipsam
-          ut, quia maiores?
-        </p>
+        <p className="singlePostDescription">{post.description}</p>
       </div>
     </div>
   );
