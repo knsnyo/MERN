@@ -4,7 +4,7 @@ const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 
 //CREATE POST
-router.Post("/", async (req, res) => {
+router.post("/", async (req, res) => {
   const newPost = new Post(req.body);
   try {
     const savedPost = await newPost.save();
@@ -69,10 +69,23 @@ router.get("/:id", async (req, res) => {
 });
 
 //GET ALL POST
-router.get("/?user=", async (req, res) => {
+router.get("/", async (req, res) => {
+  const username = req.query.user;
+  const categoryName = req.query.cat;
   try {
-    const post = await Post.findById(req.params.id);
-    res.status(200).json(post);
+    let posts;
+    if (username) {
+      posts = await Post.find({ username });
+    } else if (categoryName) {
+      posts = await Post.find({
+        categories: {
+          $in: [categoryName],
+        },
+      });
+    } else {
+      posts = await Post.find();
+    }
+    res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
   }
