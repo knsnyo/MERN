@@ -47,7 +47,7 @@ export default function SinglePost() {
             {new Date(post.createAt).toDateString}
           </span>
         </div>
-        <p className="singlePostDescription">{post.description}</p>
+        <p className="singlePostDescription">{post.desc}</p>
       </div>
     </div>
   );

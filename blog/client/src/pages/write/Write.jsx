@@ -1,5 +1,4 @@
 import "./write.css";
-import WriteBackground from "../../img/background.png";
 import { useContext, useState } from "react";
 import axios from "axios";
 import { Context } from "../../context/Context";

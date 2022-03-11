@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./topbar.css";
-import Profile from "../../img/profile.png";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 
 export default function TopBar() {
