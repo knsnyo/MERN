@@ -15,7 +15,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("/posts/" + path);
+      const res = await axios.get(`/posts/${path}`);
       setPost(res.data);
     };
     getPost();
@@ -30,7 +30,7 @@ export default function SinglePost() {
         <img src={Music} alt="" className="singlePostImg" />
         <h1 className="singPostTitle">
           {post.title}
-          {post.username === user.username &&
+          {post.username === user?.username &&
           <div className="singlePostEdit">
             <i className="singlePostIcon far fa-edit"></i>
             <i className="singlePostIcon far fa-trash-alt"></i>
