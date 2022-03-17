@@ -1,5 +1,4 @@
 import "./register.css";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -50,11 +49,6 @@ export default function Register() {
         />
         <button className="registerButton">register</button>
       </form>
-      <button className="registerLoginButton">
-        <Link to="/login" className="link">
-          Login
-        </Link>
-      </button>
       {error && <span className="registerError">Something went wrong</span>}
     </div>
   );

@@ -1,8 +1,10 @@
 import "./settings.css";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Profile from "../../img/profile.png";
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 
 export default function Settings() {
+  const { user } = useContext(Context);
   return (
     <div className="settings">
       <div className="settingsWrapper">
@@ -13,7 +15,7 @@ export default function Settings() {
         <form className="settingsForm">
           <label>Profile Picture</label>
           <div className="settingsPP">
-            <img src={Profile} alt="" />
+            <img src={user.ProfilePicture} alt="" />
             <label htmlFor="fileInput">
               <i className="settingsPPIcon far fa-user-circle"></i>
             </label>

@@ -1,5 +1,4 @@
 import "./login.css";
-import { Link } from "react-router-dom";
 import { useContext, useRef } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
@@ -18,7 +17,6 @@ export default function Login() {
         password: passwordRef.current.value,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      console.log(res.data);
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
@@ -46,11 +44,6 @@ export default function Login() {
           Login
         </button>
       </form>
-      <button className="loginRegisterButton">
-        <Link to="/register" className="link">
-          Register
-        </Link>
-      </button>
     </div>
   );
 }

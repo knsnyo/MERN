@@ -1,5 +1,6 @@
 .header{
 	margin-top: 60px;
+	height: 200px;
 }
 
 .headerTitles{
@@ -24,6 +25,5 @@
 
 .headerImg{
 	width: 100%;
-	height: 450px;
 	object-fit: cover;
 }

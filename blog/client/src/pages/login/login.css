@@ -40,15 +40,3 @@
 	cursor: not-allowed;
 	background-color: coral;
 }
-
-.loginRegisterButton{
-	position: absolute;
-	top: 60px;
-	right: 20px;
-	cursor: pointer;
-	background-color: teal;
-	border: none;
-	color: white;
-	border-radius: 10px;
-	padding: 10px;
-}

@@ -13,8 +13,8 @@ export default function Write() {
     e.preventDefault();
     const newPost = {
       username: user.username,
-      title,
-      description,
+      title: title,
+      desc: description,
     };
     if (file) {
       const data = new FormData();
@@ -27,7 +27,7 @@ export default function Write() {
       } catch (err) {}
     }
     try {
-      const res = await axios.post("/posts", newPost);
+      const res = await axios.post("/posts/", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {}
   };

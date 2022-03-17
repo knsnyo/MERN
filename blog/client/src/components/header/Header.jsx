@@ -1,5 +1,4 @@
 import "./header.css";
-import HeaderImg from "../../img/background.png";
 
 export default function Header() {
 	return (
@@ -8,11 +7,11 @@ export default function Header() {
 				<span className="headerTitleSm">React & Node</span>
 				<span className="headerTitleLg">Blog</span>
 			</div>
-			<img
+			{/*<img
 			  className="headerImg"
-				src={HeaderImg}
+				src={""}
 				alt=""
-			/>
+	/>*/}
 		</div>
 	);
 }
