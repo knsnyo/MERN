@@ -13,7 +13,7 @@ export default function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = axios.post("http://localhost:5000/auth/login", {
+      const res = axios.post("/auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
@@ -22,6 +22,7 @@ export default function Login() {
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
+  
   return (
     <div className="login">
       <span className="loginTitle">Login</span>
