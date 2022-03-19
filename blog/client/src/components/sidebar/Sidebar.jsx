@@ -15,11 +15,12 @@ export default function Sidebar() {
     };
     getCategories();
   }, []);
+
   return (
     <div className="sidebar">
       <div className="sidebarItem">
+        { user && <img src={user.ProfilePic} /> }
         <span className="sidebarTitle">ABOUT ME</span>
-        { user && <img src={user.ProfilePicture} /> }
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </div>
       <div className="sidebarItem">
