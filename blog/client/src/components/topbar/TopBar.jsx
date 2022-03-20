@@ -20,16 +20,24 @@ export default function TopBar() {
       <div className="topCenter">
         <ul className="topList">
           <li className="topListItem">
-            <Link to="/" className="link">Home</Link>
+            <Link to="/" className="link">
+              Home
+            </Link>
           </li>
           <li className="topListItem">
-            <Link to="/" className="link">ABOUT</Link>
+            <Link to="/" className="link">
+              ABOUT
+            </Link>
           </li>
           <li className="topListItem">
-            <Link to="/" className="link">CONTACT</Link>
+            <Link to="/" className="link">
+              CONTACT
+            </Link>
           </li>
           <li className="topListItem">
-            <Link to="/write" className="link">WRITE</Link>
+            <Link to="/write" className="link">
+              WRITE
+            </Link>
           </li>
           <li className="topListItem" onClick={handleLogout}>
             {user && "LOGOUT"}
@@ -37,15 +45,21 @@ export default function TopBar() {
         </ul>
       </div>
       <div className="topRight">
-        { user ? (
-          <img className="topImg" src={user.profilePicture} alt="why" />
+        {user ? (
+          <Link to="/settings" className="link">
+            <img className="topImg" src={user.profilePicture} alt="why" />
+          </Link>
         ) : (
           <ul className="topList">
             <li className="topListItem">
-              <Link className="link" to="/login">LOGIN</Link>
+              <Link className="link" to="/login">
+                LOGIN
+              </Link>
             </li>
             <li className="topListItem">
-              <Link className="link" to="/register">REGISTER</Link>
+              <Link className="link" to="/register">
+                REGISTER
+              </Link>
             </li>
           </ul>
         )}
