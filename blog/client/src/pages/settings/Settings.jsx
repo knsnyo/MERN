@@ -5,12 +5,15 @@ import { Context } from "../../context/Context";
 import axios from "axios";
 
 export default function Settings() {
+  const PF = "http://localhost:5000/images/";
   const { user } = useContext(Context);
 
   const [file, setFile] = useState(null);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +35,7 @@ export default function Settings() {
     }
     try {
       const res = await axios.put(`/users/${user._id}`, updatedUser);
+      setSuccess(true);
     } catch (err) {}
   };
 
@@ -45,7 +49,7 @@ export default function Settings() {
         <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
           <div className="settingsPP">
-            <img src={user.profilePic} alt="" />
+            <img src={PF + user.profilePic} alt="" />
             <label htmlFor="fileInput">
               <i className="settingsPPIcon far fa-user-circle"></i>
             </label>
@@ -74,6 +78,7 @@ export default function Settings() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="settingsSubmit" type="submit">Update</button>
+          {success && <span style={{color: "green", textAlign: "center", marginTop: "30px"}}>Profile has been updated.</span>}
         </form>
       </div>
       <Sidebar />
