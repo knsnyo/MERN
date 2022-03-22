@@ -24,7 +24,6 @@ const Reducer = (state, action) => {
         isFetching: false,
         error: false,
       };
-
     case "UPDATE_START":
       return {
         ...state,
