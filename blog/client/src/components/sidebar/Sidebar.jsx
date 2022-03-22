@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 
 export default function Sidebar() {
-  const { user } = useContext(Context);
+  const PF = "http://localhost:5000/images/";
+
+  const { user, dispatch } = useContext(Context);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebarItem">
-        { user && <img src={user.ProfilePic} /> }
+        { user && <img src={PF + user.profilePic} /> }
         <span className="sidebarTitle">ABOUT ME</span>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </div>
